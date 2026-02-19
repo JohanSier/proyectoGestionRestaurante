@@ -1,6 +1,6 @@
 ![Logo del Producto](https://www.dropbox.com/scl/fi/zcvzuf1c8rkq8fi22qqve/Savor.png?rlkey=y6tv1xs9auqzfj027uqjtmn14&st=8q79sgnx&dl=0 "Logo Savor")
-# Savor
 
+# Savor
 Plataforma web para la gestión integral de restaurantes.  
 Optimiza la operación diaria centralizando mesas, productos y pedidos en tiempo real.
 
