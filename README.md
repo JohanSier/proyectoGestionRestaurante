@@ -23,10 +23,10 @@ Elimina errores manuales, reduce tiempos de servicio y ofrece visibilidad clara 
 - Tailwind CSS
 
 ### Backend
-- Quarkus (Java)
-
+- SpringBoot
+  
 ### Base de Datos
-- My Sql Server
+- PostgreSQL
 
 ### Control de Versiones
 - Git + GitFlow
