@@ -3,13 +3,12 @@ import { useState } from 'react';
 
 const ProductModal = ({ categorias, onCerrar, onGuardar }) => {
   const [nombre, setNombre] = useState('');
-  const [categoria, setCategoria] = useState('');
+  const [categoria, setCategoria] = useState('Entradas');
   const [precio, setPrecio] = useState('');
   const [imagen, setImagen] = useState('');
   const [error, setError] = useState('');
 
   const handleGuardar = () => {
-    // Validaciones HU008
     if (!nombre.trim()) {
       setError('El nombre del producto no puede estar vacío');
       return;
@@ -18,60 +17,63 @@ const ProductModal = ({ categorias, onCerrar, onGuardar }) => {
       setError('El precio debe ser mayor a cero');
       return;
     }
-    if (!categoria) {
-      setError('Debes seleccionar una categoría');
-      return;
-    }
 
-    const nuevoProducto = {
+    onGuardar({
       nombre,
       categoria,
       precio: Number(precio),
-      imagen: imagen || '🍽️',
-    };
-
-    onGuardar(nuevoProducto);
+      imagen: imagen || null,
+    });
   };
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>Agregar Nuevo Producto</h2>
+        <div className="modal-header">
+          <h2>Agregar Nuevo Producto</h2>
+          <button className="modal-close" onClick={onCerrar}>✕</button>
+        </div>
 
-        {error && <p style={{ color: 'red', marginBottom: '0.8rem' }}>{error}</p>}
+        {error && <p className="modal-error">{error}</p>}
 
-        <input
-          type="text"
-          placeholder="Nombre del Producto *"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-        />
+        <div className="modal-field">
+          <label>Nombre del Producto</label>
+          <input
+            type="text"
+            placeholder="ej. Salmón a la parrilla"
+            value={nombre}
+            onChange={(e) => { setNombre(e.target.value); setError(''); }}
+          />
+        </div>
 
-        <select
-          value={categoria}
-          onChange={(e) => setCategoria(e.target.value)}
-        >
-          <option value="">Seleccionar Categoría *</option>
-          {categorias.map((cat) => (
-            <option key={cat.id} value={cat.nombre}>
-              {cat.nombre}
-            </option>
-          ))}
-        </select>
+        <div className="modal-field">
+          <label>Categoría</label>
+          <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
+            {categorias.map((cat) => (
+              <option key={cat.id} value={cat.nombre}>{cat.nombre}</option>
+            ))}
+          </select>
+        </div>
 
-        <input
-          type="number"
-          placeholder="Precio (COP) *"
-          value={precio}
-          onChange={(e) => setPrecio(e.target.value)}
-        />
+        <div className="modal-field">
+          <label>Precio (COP)</label>
+          <input
+            type="number"
+            placeholder="0"
+            value={precio}
+            onChange={(e) => { setPrecio(e.target.value); setError(''); }}
+          />
+        </div>
 
-        <input
-          type="text"
-          placeholder="URL de Imagen (Opcional)"
-          value={imagen}
-          onChange={(e) => setImagen(e.target.value)}
-        />
+        <div className="modal-field">
+          <label>URL de Imagen (opcional)</label>
+          <input
+            type="text"
+            placeholder="https://..."
+            value={imagen}
+            onChange={(e) => setImagen(e.target.value)}
+          />
+        </div>
 
         <div className="modal-buttons">
           <button className="btn-cancelar" onClick={onCerrar}>Cancelar</button>
