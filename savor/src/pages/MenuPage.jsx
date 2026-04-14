@@ -76,7 +76,7 @@ const MenuPage = () => {
       {/* ===== CONTENIDO ===== */}
       <div className="menu-container">
         <div className="menu-header">
-          <div>
+          <div style={{ paddingLeft: '0.5rem' }}>
             <h1>Menú de Platos</h1>
             <p>Administra el menú del restaurante.</p>
           </div>

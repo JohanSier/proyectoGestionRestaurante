@@ -124,12 +124,15 @@ body { font-family: 'Segoe UI', sans-serif; background: var(--gris-fondo); }
 .menu-header h1 {
   font-size: 1.8rem;
   color: var(--texto-oscuro);
+  margin-bottom: 0.2rem;
+  padding-left: 0;
 }
 
 .menu-header p {
   color: var(--texto-gris);
   font-size: 0.9rem;
   margin-top: 0.2rem;
+  padding-left: 0;
 }
 
 .menu-header-actions {
@@ -188,6 +191,8 @@ body { font-family: 'Segoe UI', sans-serif; background: var(--gris-fondo); }
   font-size: 0.95rem;
   width: 100%;
   color: var(--texto-oscuro);
+  background: white;
+  -webkit-appearance: none;
 }
 
 /* ===== TABLA ===== */
